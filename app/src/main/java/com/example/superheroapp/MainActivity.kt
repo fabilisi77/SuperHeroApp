@@ -1,5 +1,6 @@
 package com.example.superheroapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.widget.Adapter
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.superheroapp.DetailSuperHero.Companion.EXTRA_ID
 import com.example.superheroapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val BASE_URL = "https://superheroapi.com/"
+    }
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
     private lateinit var adapter: SuperHeroAdapter
@@ -46,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        adapter = SuperHeroAdapter()
+        adapter = SuperHeroAdapter { navigateToDetail(it) }
         binding.rvSuperHeroList.setHasFixedSize(true)
         binding.rvSuperHeroList.layoutManager = LinearLayoutManager(this)
         binding.rvSuperHeroList.adapter = adapter
@@ -79,16 +86,22 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun getRetrofit(): Retrofit {
 
-}
+        return Retrofit
+            .Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-private fun getRetrofit(): Retrofit {
+    }
 
-    return Retrofit
-        .Builder()
-        .baseUrl("https://superheroapi.com/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    private fun navigateToDetail(id: String) {
+        val intent = Intent(this, DetailSuperHero::class.java)
+        intent.putExtra(EXTRA_ID, id)
+        startActivity(intent)
+    }
+
 
 }
 
