@@ -62,8 +62,9 @@ class MainActivity : AppCompatActivity() {
                 Log.i("Comprobation", response.toString())
 
                 runOnUiThread {
-                adapter.updateList(response.results)
-                    binding.progressBar.isVisible = false }
+                    adapter.updateList(response.results)
+                    binding.progressBar.isVisible = false
+                }
 
 
             }

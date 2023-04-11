@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 class SuperHeroAdapter(var superHeroList: List<SuperHeroListResponse> = emptyList()) :
     RecyclerView.Adapter<SuperHeroViewHolder>() {
 
-    fun updateList(superHeroList: List<SuperHeroListResponse>){
+    fun updateList(superHeroList: List<SuperHeroListResponse>) {
         this.superHeroList = superHeroList
         notifyDataSetChanged()
     }
