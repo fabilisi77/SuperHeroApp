@@ -1,15 +1,19 @@
-package com.example.superheroapp
+package com.example.superheroapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Adapter
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.superheroapp.DetailSuperHero
 import com.example.superheroapp.DetailSuperHero.Companion.EXTRA_ID
+import com.example.superheroapp.ui.superhero.adapter.SuperHeroAdapter
+import com.example.superheroapp.SuperHeroDataResponse
 import com.example.superheroapp.databinding.ActivityMainBinding
+import com.example.superheroapp.repository.ApiService
+import com.example.superheroapp.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,9 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val BASE_URL = "https://superheroapi.com/"
-    }
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
         return Retrofit
             .Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

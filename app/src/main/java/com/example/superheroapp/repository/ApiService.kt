@@ -1,5 +1,7 @@
-package com.example.superheroapp
+package com.example.superheroapp.repository
 
+import com.example.superheroapp.SuperHeroDataResponse
+import com.example.superheroapp.SuperHeroDetailResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

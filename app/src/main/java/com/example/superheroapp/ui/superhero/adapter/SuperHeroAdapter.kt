@@ -1,8 +1,10 @@
-package com.example.superheroapp
+package com.example.superheroapp.ui.superhero.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.superheroapp.R
+import com.example.superheroapp.SuperHeroListResponse
 
 class SuperHeroAdapter(
     var superHeroList: List<SuperHeroListResponse> = emptyList(),

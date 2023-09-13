@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import com.example.superheroapp.databinding.ActivityDetailSuperHeroBinding
+import com.example.superheroapp.repository.ApiService
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
