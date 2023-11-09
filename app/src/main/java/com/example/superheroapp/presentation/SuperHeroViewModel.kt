@@ -9,10 +9,10 @@ import kotlinx.coroutines.Dispatchers
 
 class SuperHeroViewModel(private val repo: SuperHeroRepository) : ViewModel() {
 
-    fun fetchSuperHeroById() = liveData(Dispatchers.IO) {
+    fun fetchSuperHeroById(superHeroName: String) = liveData(Dispatchers.IO) {
         emit(Result.Loading())
         try {
-            emit(Result.Success(repo.getSuperHero()))
+            emit(Result.Success(repo.getSuperHero(superHeroName)))
 
         } catch (e: Exception) {
             emit(Result.Failure(e))

@@ -1,7 +1,5 @@
 package com.example.superheroapp.data.model
 
-import com.example.superheroapp.SuperHeroImageResponse
-import com.example.superheroapp.SuperHeroList
 import com.google.gson.annotations.SerializedName
 
 data class SuperHeroDetail(
