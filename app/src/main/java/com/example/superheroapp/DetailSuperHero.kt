@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import com.example.superheroapp.databinding.ActivityDetailSuperHeroBinding
-import com.example.superheroapp.repository.ApiService
+import com.example.superheroapp.repository.WebService
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +35,7 @@ class DetailSuperHero : AppCompatActivity() {
     private fun getSuperHeroInformation(id: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val superheroDetail =
-                getRetrofit().create(ApiService::class.java).getSuperHeroDetail(id)
+                getRetrofit().create(WebService::class.java).getSuperHeroDetail(id)
 
             if (superheroDetail.body() != null) {
                 runOnUiThread {

@@ -2,12 +2,11 @@ package com.example.superheroapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class SuperHero(
-    @SerializedName("response") val response: String,
-    @SerializedName("results") val results: List<SuperHeroListResponse>
+data class SuperHeroList(
+    @SerializedName("results") val results: List<SuperHero> = listOf()
 )
 
-data class SuperHeroListResponse(
+data class SuperHero(
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("image") val image: SuperHeroImageResponse

@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.superheroapp.R
-import com.example.superheroapp.SuperHeroListResponse
+import com.example.superheroapp.SuperHeroList
 
 class SuperHeroAdapter(
-    var superHeroList: List<SuperHeroListResponse> = emptyList(),
+    var superHeroList: List<SuperHeroList> = emptyList(),
     private val onItemSelected: (String) -> Unit
 ) :
     RecyclerView.Adapter<SuperHeroViewHolder>() {
 
-    fun updateList(superHeroList: List<SuperHeroListResponse>) {
+    fun updateList(superHeroList: List<SuperHeroList>) {
         this.superHeroList = superHeroList
         notifyDataSetChanged()
     }

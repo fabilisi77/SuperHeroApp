@@ -12,13 +12,12 @@ import com.example.superheroapp.DetailSuperHero.Companion.EXTRA_ID
 import com.example.superheroapp.ui.superhero.adapter.SuperHeroAdapter
 import com.example.superheroapp.SuperHeroDataResponse
 import com.example.superheroapp.databinding.ActivityMainBinding
-import com.example.superheroapp.repository.ApiService
-import com.example.superheroapp.utils.Constants
+import com.example.superheroapp.repository.WebService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        retrofit = getRetrofit()
         initUI()
     }
 
@@ -63,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     private fun searchByName(query: String) {
         binding.progressBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
-            val myResponse = retrofit.create(ApiService::class.java).getSuperHero(query)
+            val myResponse = retrofit.create(WebService::class.java).getSuperHero(query)
 
             val response: SuperHeroDataResponse? = myResponse.body()
             if (response != null) {
@@ -87,15 +85,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun getRetrofit(): Retrofit {
-
-        return Retrofit
-            .Builder()
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-    }
 
     private fun navigateToDetail(id: String) {
         val intent = Intent(this, DetailSuperHero::class.java)
